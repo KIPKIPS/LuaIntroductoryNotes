@@ -19,3 +19,6 @@ print(tab1.k1)
 
 tab1["k2"]="v2";
 print(tab1.k2)
+
+tab1["k2"]=nil
+print(tab1.k2)
