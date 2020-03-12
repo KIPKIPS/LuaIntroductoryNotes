@@ -22,3 +22,6 @@ print(tab1.k2)
 
 tab1["k2"]=nil
 print(tab1.k2)
+tab1[10]="v3"
+print(tab1[10])
+
