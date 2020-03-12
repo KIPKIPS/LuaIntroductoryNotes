@@ -12,3 +12,10 @@ print(tab3[3])
 for k,v in pairs(tab3) do
  print(k.." "..v)
  end
+
+--tableÌí¼ÓÊı¾İ
+tab1.k1="v1";
+print(tab1.k1)
+
+tab1["k2"]="v2";
+print(tab1.k2)
