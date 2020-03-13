@@ -43,4 +43,8 @@ testFun(tab,f1)
 testFun(tab,f2)
 
 
-
+testFun(tab,
+    function (k,v)
+	    print(k.."|"..v)
+	end
+)
