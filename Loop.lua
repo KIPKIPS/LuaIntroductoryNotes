@@ -24,8 +24,18 @@ for k,v in pairs(tab) do
     print(k,v)
 end
 --]]
+
+--[[
 a=1
 repeat
     print(a)
 	a=a+1
 until(a>5)
+--]]
+
+--Ç¶Ì×Ñ­»·
+for a=1,5,1 do
+    for b=1,a,1 do
+	    print(a)
+	end
+end
