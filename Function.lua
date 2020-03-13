@@ -54,6 +54,7 @@ temp=testFun
 temp(tab,f1)
 --]]
 
+--[[
 myFunc=function (n)
     print(n)
 end
@@ -71,3 +72,11 @@ end
 
 Add(1,2,NumAdd)
 Add("asda","afdfs",StrAdd)
+--]]
+
+function fun()
+    return 1,2,3,"asda"
+end
+r1,r2,r3,r4=fun()
+print(r1,r2,r3,r4)
+
