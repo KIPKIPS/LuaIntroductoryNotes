@@ -25,8 +25,9 @@ print(fun2(1))
 --]]
 
 --ÀàC#Î¯ÍÐ
+--[[
 tab={k1="v1",k2="v2",k3="v3"}
-function f1(k,v)
+local function f1(k,v)
     print(k.." : "..v)
 end
 function f2(k,v)
@@ -48,3 +49,25 @@ testFun(tab,
 	    print(k.."|"..v)
 	end
 )
+
+temp=testFun
+temp(tab,f1)
+--]]
+
+myFunc=function (n)
+    print(n)
+end
+
+function NumAdd(a,b)
+    print(a+b)
+end
+function StrAdd(a,b)
+    print(a..b)
+end
+
+function Add(a,b,AddFunc)
+    AddFunc(a,b)
+end
+
+Add(1,2,NumAdd)
+Add("asda","afdfs",StrAdd)
