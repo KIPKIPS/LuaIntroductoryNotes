@@ -12,5 +12,5 @@ print(s)
 s=string.gsub(str,"a","c",1) --最后一个参数表示替换次数
 print(s)
 
-index=string.find(str,"BBB",2) --最后一个参数表示其起始查找索引
+index=string.find(str,"BBB",2) --最后一个参数表示起始索引
 print(index)
