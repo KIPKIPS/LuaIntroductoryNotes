@@ -80,3 +80,16 @@ end
 r1,r2,r3,r4=fun()
 print(r1,r2,r3,r4)
 
+function test(...)
+local arg={...}
+    print(arg)
+	for k,v in pairs(arg) do
+	    print(k.." "..v)
+	end
+end
+
+--test()
+--test(12)
+--test(1,2,3)
+test("asdf","asd")
+test(1,"add")
