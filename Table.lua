@@ -1,3 +1,4 @@
+--[[
 tab1={} --空表 {}为构造表达式
 
 tab2={k1=100,k2="v2"}
@@ -24,4 +25,41 @@ tab1["k2"]=nil
 print(tab1.k2)
 tab1[10]="v3"
 print(tab1[10])
+--]]
 
+
+tab={}
+tab[1]=2
+tab["name"]="wkp"
+newtab=tab
+--newtab和tab指向同一片内存区
+print(tab.name)
+print(tab[1])
+print(tab["name"])
+print(newtab["name"])
+print(newtab.name)
+print(newtab[1])
+
+--若将tab置空,不会释放内存,因为newtab还指向着该内存区域
+tab=nil
+--print(tab.name)--报错
+print(newtab.name)--newtab仍然可以访问
+
+tab={"Lua","C#","Java","Python","C++"}
+--tab字符串拼接
+--print(table.concat(tab))
+--print(table.concat(tab,"王琨鹏"))
+--print(table.concat(tab,"",4))
+
+table.insert(tab,"JavaScript")--在表的末尾添加数据
+table.insert(tab,3,"C")--在表的索引三处插入数据
+
+
+--两种遍历table的方式
+for v in pairs(tab) do
+    print(tab[v])
+end
+
+for i=1,#tab do
+    print(tab[i])
+end
