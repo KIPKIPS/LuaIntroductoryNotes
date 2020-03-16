@@ -3,7 +3,7 @@
 --- Created by KipKips.
 --- DateTime: 2020.3.16 22:28
 ---
-
+--[[
 tab={"Lua","Java","C#","C++"} --普通表
 metatab={}--元表
 setmetatable(tab,metatab) --将metatab设置为tab的元表,会将普通表返回,元表扩展了普通表的行为
@@ -13,7 +13,15 @@ st=setmetatable(tab,metatab)--普通表
 print(st[1],st[2],st[3],st[4])
 
 gt=getmetatable(tab)--获取元表
+--]]
 
+--[[
 --简要写法
 metatab={}
 tab=setmetatable({"asd","asda","h"},metatab)
+--]]
+
+metatab={__metatable="assdgd",1,2}
+tab=setmetatable({"asd","asda","h"},metatab)
+print(tab[1])
+print(getmetatable(tab)[2])
