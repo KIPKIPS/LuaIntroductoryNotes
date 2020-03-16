@@ -13,5 +13,10 @@ end
 function Module.fun2()
     print("这是Module模块的fun2函数")
 end
-
+local function LocalFun1()
+    print("这是Module模块的Localfun1函数")
+end
+function Module.fun3()
+    LocalFun1()
+end
 return Module
