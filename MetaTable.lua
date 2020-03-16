@@ -24,4 +24,6 @@ tab=setmetatable({"asd","asda","h"},metatab)
 metatab={__metatable="assdgd",1,2}
 tab=setmetatable({"asd","asda","h"},metatab)
 print(tab[1])
-print(getmetatable(tab)[2])
+--元表的__metatable存在值
+print(getmetatable(tab)[1]) --无法访问
+print(getmetatable(tab))--返回__metatable键的对应值
