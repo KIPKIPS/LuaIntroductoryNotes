@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Function.lua" type="lua.app" factoryName="Lua Application" singleton="false">
+    <option name="program" value="E:\Lua5.1\5.1\lua.exe" />
+    <option name="file" value="$PROJECT_DIR$/Function.lua" />
+    <option name="workingDir" value="D:\Lua_WorkStation" />
+    <option name="debuggerType" value="2" />
+    <option name="params" value="" />
+    <option name="charset" value="GBK" />
+    <option name="showConsole" value="true" />
+    <method v="2" />
+  </configuration>
+</component>

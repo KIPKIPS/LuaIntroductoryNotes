@@ -4,7 +4,7 @@ for i=1,3 do
     print(array[i])
 end
 
---array的索引可以为负数
+--array的遍历
 array={}
 for i=-5,-1 do
     array[i]=-i
@@ -26,15 +26,14 @@ for i=1,4 do
 end
 --]]
 
---二维数组第一种生命声明式
-array={{},{},{}} --二维数组赋值必须先初始化
+--
+array={{},{},{}} --
 for i=1,3 do
     for j=1,3 do
 	    array[i][j]=i+j;
 	end
 end
 
---二维数组第二种声明方式
 array={}
 for i=1,3 do
     array[i]={}
@@ -44,6 +43,6 @@ for i=1,3 do
 end
 for i=1,3 do
     for j=1,3 do
-	    print(array[i][j])
+	    print(array[i][j].."???")
 	end
 end

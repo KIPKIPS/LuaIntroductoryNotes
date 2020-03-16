@@ -84,7 +84,7 @@ function test(...)
 local arg={...}
     print(arg)
 	for k,v in pairs(arg) do
-	    print(k.." "..v)
+	    print(k.." Á¬½Ó "..v)
 	end
 end
 
