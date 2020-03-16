@@ -10,3 +10,25 @@ end
 for k,v in ipairs(arr) do
     print(k,v)
 end
+
+--for 变量列表 in 迭代函数,状态变量,控制变量 do
+	--循环体
+--end
+
+--1.调用迭代函数(把状态变量和控制变量作为参数传递给迭代函数)
+--状态变量只会在第一次调用时赋值
+--2.若迭代函数的返回值返回nil,退出循环列表
+--若不是nil的话,把返回值赋给变量列表,并执行循环体
+
+function square(state,control)
+    if control>=state then
+	    return nil
+	else
+	    control=control+1
+	    return control,control*control
+    end
+end
+
+for i,j in square,10,0 do
+    print(i.." 的平方是: "..j)
+end
