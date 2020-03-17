@@ -1,20 +1,20 @@
 --[[
-tab1={} --¿Õ±í {}Îª¹¹Ôì±í´ïÊ½
+tab1={} --ç©ºè¡¨ {}ä¸ºæ„é€ è¡¨è¾¾å¼
 
 tab2={k1=100,k2="v2"}
---Á½ÖÖ·ÃÎÊ·½Ê½
+--ä¸¤ç§è®¿é—®æ–¹å¼
 print(tab2.k1)
 print(tab2["k1"])
 
---²»Ö¸¶¨¼üÖµ,Ä¬ÈÏÎª1,2,3,4....
+--ä¸æŒ‡å®šé”®å€¼,é»˜è®¤ä¸º1,2,3,4....
 tab3={"apple","orange","pear"}
 print(tab3[3])
---tableµÄ±éÀú
+--tableçš„éå†
 for k,v in pairs(tab3) do
  print(k.." "..v)
  end
 
---tableÌí¼ÓÊı¾İ
+--tableæ·»åŠ æ•°æ®
 tab1.k1="v1";
 print(tab1.k1)
 
@@ -32,7 +32,7 @@ tab={}
 tab[1]=2
 tab["name"]="wkp"
 newtab=tab
---newtabºÍtabÖ¸ÏòÍ¬Ò»Æ¬ÄÚ´æÇø
+--newtabå’ŒtabæŒ‡å‘åŒä¸€ç‰‡å†…å­˜åŒº
 print(tab.name)
 print(tab[1])
 print(tab["name"])
@@ -40,22 +40,22 @@ print(newtab["name"])
 print(newtab.name)
 print(newtab[1])
 
---Èô½«tabÖÃ¿Õ,²»»áÊÍ·ÅÄÚ´æ,ÒòÎªnewtab»¹Ö¸Ïò×Å¸ÃÄÚ´æÇøÓò
+--è‹¥å°†tabç½®ç©º,ä¸ä¼šé‡Šæ”¾å†…å­˜,å› ä¸ºnewtabè¿˜æŒ‡å‘ç€è¯¥å†…å­˜åŒºåŸŸ
 tab=nil
---print(tab.name)--±¨´í
-print(newtab.name)--newtabÈÔÈ»¿ÉÒÔ·ÃÎÊ
+--print(tab.name)--æŠ¥é”™
+print(newtab.name)--newtabä»ç„¶å¯ä»¥è®¿é—®
 
 tab={"Lua","C#","Java","Python","C++"}
---tab×Ö·û´®Æ´½Ó
+--tabå­—ç¬¦ä¸²æ‹¼æ¥
 --print(table.concat(tab))
---print(table.concat(tab,"ÍõçûÅô"))
+--print(table.concat(tab,"ç‹ç¨é¹"))
 --print(table.concat(tab,"",4))
 
-table.insert(tab,"JavaScript")--ÔÚ±íµÄÄ©Î²Ìí¼ÓÊı¾İ
-table.insert(tab,3,"C")--ÔÚ±íµÄË÷ÒıÈı´¦²åÈëÊı¾İ
+table.insert(tab,"JavaScript")--åœ¨è¡¨çš„æœ«å°¾æ·»åŠ æ•°æ®
+table.insert(tab,3,"C")--åœ¨è¡¨çš„ç´¢å¼•ä¸‰å¤„æ’å…¥æ•°æ®
 
 
---Á½ÖÖ±éÀútableµÄ·½Ê½
+--ä¸¤ç§éå†tableçš„æ–¹å¼
 for v in pairs(tab) do
     print(tab[v])
 end
@@ -70,14 +70,14 @@ for index in pairs(tab) do
     print(tab[index]);
 end
 
---ÅÅĞò
-print("ÅÅĞòºó:")
+--æ’åº
+print("æ’åºå:")
 table.sort(tab)
 for index in pairs(tab) do
     print(index,tab[index]);
 end
 
---×Ö·ûÀàĞÍ±È½Ï´óĞ¡
+--å­—ç¬¦ç±»å‹æ¯”è¾ƒå¤§å°
 function Max(tab,dataType)
     local max
     if dataType=="String" then
@@ -94,5 +94,5 @@ function Max(tab,dataType)
     return max
 end
 num={1,34,5,345,3,2,765,758,234,21,4,432,5,25,3}
-print(Max(tab,"String"))
-print(Max(num,"Number"))
+print("æœ€å¤§å€¼"..Max(tab,"String"))
+print("æœ€å¤§å€¼"..Max(num,"Number"))

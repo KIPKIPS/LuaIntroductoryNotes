@@ -10,3 +10,4 @@ Lua'sWorkStation
 7.迭代器
 8.table的操作
 9.模块与包
+10.table和metatable

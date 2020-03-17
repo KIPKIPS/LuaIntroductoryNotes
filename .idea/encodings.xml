@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/Array.lua" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Array.lua" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ConditionalStatement.lua" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DataType.lua" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/FirstLuaCode.lua" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Function.lua" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/HelloWorld.lua" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Iterator.lua" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Loop.lua" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MetaTable.lua" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Operator.lua" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ProcessControl.lua" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/README.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/String.lua" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Table.lua" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Variable.lua" charset="UTF-8" />
     <file url="PROJECT" charset="GBK" />
   </component>
 </project>

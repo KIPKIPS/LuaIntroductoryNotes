@@ -1,4 +1,4 @@
----Êä³ö±äÁ¿µÄÀàĞÍ
+---è¾“å‡ºå˜é‡çš„ç±»å‹
 --[[
 print(type("dssd"))
 print(type(13))
@@ -7,7 +7,7 @@ print(type(type))
 print(type(print))
 print(type(nil))
 
---²»´æÔÚµÄÖµ·µ»Ønil
+--ä¸å­˜åœ¨çš„å€¼è¿”å›nil
 print(type(x))
 --]]
 
@@ -18,5 +18,5 @@ end
 print()
 tab1.key1 = nil
 for k, v in pairs(tab1) do
-    print(k .. " " .. v)
+    print(k .. "å’Œ" .. v)
 end

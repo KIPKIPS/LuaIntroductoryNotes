@@ -5,7 +5,7 @@
     <option name="workingDir" value="D:\Lua_WorkStation" />
     <option name="debuggerType" value="2" />
     <option name="params" value="" />
-    <option name="charset" value="GBK" />
+    <option name="charset" value="UTF-8" />
     <option name="showConsole" value="true" />
     <method v="2" />
   </configuration>

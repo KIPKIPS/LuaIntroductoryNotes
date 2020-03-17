@@ -1,8 +1,8 @@
----'' "" [[]] ¶àĞĞ×Ö·û´®
+---'' "" [[]] å¤šè¡Œå­—ç¬¦ä¸²
 
---- /n //  /" /' ×ªÒå×Ö·û
+--- /n //  /" /' è½¬ä¹‰å­—ç¬¦
 
----string³£¼ûº¯Êı²Ù×÷
+---stringå¸¸è§å‡½æ•°æ“ä½œ
 --[[
 str="aaaBBB123"
 s=string.upper(str)
@@ -11,18 +11,18 @@ print(s)
 s=string.gsub(str,"aB","")
 print(s)
 
-s=string.gsub(str,"a","c",1) --×îºóÒ»¸ö²ÎÊı±íÊ¾Ìæ»»´ÎÊı
+s=string.gsub(str,"a","c",1) --æœ€åä¸€ä¸ªå‚æ•°è¡¨ç¤ºæ›¿æ¢æ¬¡æ•°
 print(s)
 
-index=string.find(str,"BBB",2) --×îºóÒ»¸ö²ÎÊı±íÊ¾ÆğÊ¼Ë÷Òı
+index=string.find(str,"BBB",2) --æœ€åä¸€ä¸ªå‚æ•°è¡¨ç¤ºèµ·å§‹ç´¢å¼•
 print(index)
 
-s=string.reverse(str)--×Ö·û´®·­×ª
+s=string.reverse(str)--å­—ç¬¦ä¸²ç¿»è½¬
 print(s)
 
 
 n1,n2=4,5
-s=string.format("¼Ó·¨ÔËËã:%d+%d=%i",n1,n2,(n1+n2))
+s=string.format("åŠ æ³•è¿ç®—:%d+%d=%i",n1,n2,(n1+n2))
 print(s)
 
 s=string.format("select * from user where username= '%s' and password= '%s'","wkp","111111")
@@ -33,7 +33,7 @@ print(s)
 d=1
 m=22
 y=1998
-s=string.format("ÈÕÆÚ:%02d/%02d/%08d",d,m,y)
+s=string.format("æ—¥æœŸ:%02d/%02d/%08d",d,m,y)
 print(s)
 
 s=string.format("%+d",-15)

@@ -1,4 +1,4 @@
----±äÁ¿µÄÊ¹ÓÃ
+---å˜é‡çš„ä½¿ç”¨
 --[[
 if 10 then
 print("true")
@@ -28,16 +28,15 @@ a=2.3e-8
 print(a)
 --]]
 
-
+---å­—ç¬¦å—
 html = [[
 <html>
 <head></head>
 <body>
-    <a href="http://www.runoob.com/">²ËÄñ½Ì³Ì</a>
+    <a href="http://www.runoob.com/">èœé¸Ÿæ•™ç¨‹</a>
 </body>
 </html>
 ]]
-
 print(html)
 print("123".."456")
 print("2" + 6)
@@ -46,7 +45,7 @@ print("2 + 6")
 print("-2e2" * "6")
 
 str="123456"
-print(#str)
+print("é•¿åº¦"..#str)
 print(#"123456")
 
 

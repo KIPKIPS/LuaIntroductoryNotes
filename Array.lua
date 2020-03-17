@@ -1,4 +1,4 @@
----arrayµÄ±éÀú
+---arrayçš„éå†
 --[[
 array={"asdf","fsdaf","sadf"}
 for i=1,3 do
@@ -14,7 +14,7 @@ for i=-5,-3 do
 end
 
 --]]
----¶àÎ¬Êı×éµÄ±éÀú
+---å¤šç»´æ•°ç»„çš„éå†
 --[[
 array={{"xm","xh"},{"xl","xa"},{"zs","ls"},{"wmz","nm"}}
 --print(array[1][2])
@@ -26,7 +26,7 @@ for i=1,4 do
 end
 --]]
 
----¶àÎ¬Êı×éµÄÁ½ÖÖÉùÃ÷¸³Öµ·½·¨
+---å¤šç»´æ•°ç»„çš„ä¸¤ç§å£°æ˜èµ‹å€¼æ–¹æ³•
 array={{},{},{}} --
 for i=1,3 do
     for j=1,3 do
@@ -43,6 +43,6 @@ for i=1,3 do
 end
 for i=1,3 do
     for j=1,3 do
-	    print(array[i][j].."ÔªËØ")
+	    print(array[i][j].."å…ƒç´ ")
 	end
 end

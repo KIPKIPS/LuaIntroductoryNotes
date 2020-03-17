@@ -1,4 +1,4 @@
----º¯ÊıµÄÉùÃ÷
+---å‡½æ•°çš„å£°æ˜
 --[[
 function fact(n)
     if n==1 then
@@ -25,7 +25,7 @@ print(fun2(1))
 
 --]]
 
----ÀàC#Î¯ÍĞ
+---ç±»C#å§”æ‰˜
 --[[
 tab={k1="v1",k2="v2",k3="v3"}
 local function f1(k,v)
@@ -54,7 +54,7 @@ testFun(tab,
 temp=testFun
 temp(tab,f1)
 --]]
----Î¯ÍĞ
+---å§”æ‰˜
 --[[
 myFunc=function (n)
     print(n)
@@ -75,19 +75,19 @@ Add(1,2,NumAdd)
 Add("asda","afdfs",StrAdd)
 --]]
 
----º¯ÊıµÄ·µ»ØÖµ
+---å‡½æ•°çš„è¿”å›å€¼
 function fun()
     return 1,2,3,"asda"
 end
 r1,r2,r3,r4=fun()
 print(r1,r2,r3,r4)
 
----¶à²ÎÊıº¯Êı
+---å¤šå‚æ•°å‡½æ•°
 function test(...)
 	local arg={...}
     print(arg)
 	for k,v in pairs(arg) do
-	    print(k.." Á¬½Ó "..v)
+	    print(k.." è¿æ¥ "..v)
 	end
 end
 

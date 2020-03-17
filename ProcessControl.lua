@@ -10,9 +10,9 @@ else
 end
 --]]
 
-a=20
+a=-1
 if a>0 then print(a)
 elseif a>10 then print(a)
 elseif a>20 then print(a)
-else print("¶¼²»Âú×ã")
+else print("éƒ½ä¸æ»¡è¶³")
 end

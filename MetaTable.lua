@@ -5,21 +5,21 @@
 ---
 
 
----ÉèÖÃÆÕÍ¨±íºÍÔª±íµÄ¹ØÁª
+---è®¾ç½®æ™®é€šè¡¨å’Œå…ƒè¡¨çš„å…³è”
 --[[
-tab={"Lua","Java","C#","C++"} --ÆÕÍ¨±í
-metatab={}--Ôª±í
-setmetatable(tab,metatab) --½«metatabÉèÖÃÎªtabµÄÔª±í,»á½«ÆÕÍ¨±í·µ»Ø,Ôª±íÀ©Õ¹ÁËÆÕÍ¨±íµÄĞĞÎª
+tab={"Lua","Java","C#","C++"} --æ™®é€šè¡¨
+metatab={}--å…ƒè¡¨
+setmetatable(tab,metatab) --å°†metatabè®¾ç½®ä¸ºtabçš„å…ƒè¡¨,ä¼šå°†æ™®é€šè¡¨è¿”å›,å…ƒè¡¨æ‰©å±•äº†æ™®é€šè¡¨çš„è¡Œä¸º
 
-st=setmetatable(tab,metatab)--ÆÕÍ¨±í
+st=setmetatable(tab,metatab)--æ™®é€šè¡¨
 
 print(st[1],st[2],st[3],st[4])
 
-gt=getmetatable(tab)--»ñÈ¡Ôª±í
+gt=getmetatable(tab)--è·å–å…ƒè¡¨
 --]]
 
 --[[
---¼òÒªĞ´·¨
+--ç®€è¦å†™æ³•
 metatab={}
 tab=setmetatable({"asd","asda","h"},metatab)
 --]]
@@ -28,33 +28,33 @@ tab=setmetatable({"asd","asda","h"},metatab)
 metatab={__metatable="assdgd",1,2}
 tab=setmetatable({"asd","asda","h"},metatab)
 print(tab[1])
---Ôª±íµÄ__metatable´æÔÚÖµ
-print(getmetatable(tab)[1]) --ÎŞ·¨·ÃÎÊ
-print(getmetatable(tab))--·µ»Ø__metatable¼üµÄ¶ÔÓ¦Öµ
+--å…ƒè¡¨çš„__metatableå­˜åœ¨å€¼
+print(getmetatable(tab)[1]) --æ— æ³•è®¿é—®
+print(getmetatable(tab))--è¿”å›__metatableé”®çš„å¯¹åº”å€¼
 --]]
 
----__metatableÓÃ·¨
+---__metatableç”¨æ³•
 --[[
---Ôª±íÖĞµÄ¼üÊÇÓĞÏŞÖÆµÄ,²»ÄÜËæÒâĞ´
+--å…ƒè¡¨ä¸­çš„é”®æ˜¯æœ‰é™åˆ¶çš„,ä¸èƒ½éšæ„å†™
 metatab={
     __metatable="assdgd",
-    --__indexÎªÒ»¸öº¯Êı,²ÎÊıÊÇ¹Ì¶¨µÄ,²ÎÊıtabÎª¹ØÁªµÄÆÕÍ¨±í,keyÎª·ÃÎÊË÷Òı
-    --__indexÖ¸ÏòµÄº¯Êı¿ÉÒÔÓĞ·µ»ØÖµ
+    --__indexä¸ºä¸€ä¸ªå‡½æ•°,å‚æ•°æ˜¯å›ºå®šçš„,å‚æ•°tabä¸ºå…³è”çš„æ™®é€šè¡¨,keyä¸ºè®¿é—®ç´¢å¼•
+    --__indexæŒ‡å‘çš„å‡½æ•°å¯ä»¥æœ‰è¿”å›å€¼
     __index=function(tab,key)
-        --print("²»´æÔÚË÷Òı"..key.."µÄÖµ")
-        return "²»´æÔÚË÷Òı"..key.."µÄÖµ"
+        --print("ä¸å­˜åœ¨ç´¢å¼•"..key.."çš„å€¼")
+        return "ä¸å­˜åœ¨ç´¢å¼•"..key.."çš„å€¼"
     end
 }
 tab=setmetatable({"Lua","C#","C++","Java","Python"},metatab)
 
-print(tab[1])--ÈôË÷Òı¿ÉÒÔÕı³£·ÃÎÊ,Ôò²»µ÷ÓÃÔª±íµÄ__indexÖ¸ÏòµÄº¯Êı
-print(tab[10])--ÈôË÷Òı²»¿ÉÒÔ·ÃÎÊ,Ôòµ÷ÓÃ__indexÖ¸ÏòµÄº¯Êı,ÓĞ·µ»ØÖµ,ÔòÊä³ö·µ»ØÖµ
+print(tab[1])--è‹¥ç´¢å¼•å¯ä»¥æ­£å¸¸è®¿é—®,åˆ™ä¸è°ƒç”¨å…ƒè¡¨çš„__indexæŒ‡å‘çš„å‡½æ•°
+print(tab[10])--è‹¥ç´¢å¼•ä¸å¯ä»¥è®¿é—®,åˆ™è°ƒç”¨__indexæŒ‡å‘çš„å‡½æ•°,æœ‰è¿”å›å€¼,åˆ™è¾“å‡ºè¿”å›å€¼
 a=tab[10]
 print(a)
 --]]
 
 
----__indexµÄÓÃ·¨
+---__indexçš„ç”¨æ³•
 --[[
 indextab={}
 indextab[5]="Nodejs"
@@ -65,18 +65,18 @@ indextab[9]="SQL"
 indextab[10]="Swift"
 metatab={
     __metatable="lock",
-    --__indexÎªÒ»¸ö±í,ÈôË÷Òı²»¿ÉÒÔ·ÃÎÊ,ÔòÔÚ__indexµÄ±íÖĞ²éÑ¯,ÈôË÷Òı¿ÉÒÔÕı³£·ÃÎÊ,ÔòÕı³£·µ»Ø
+    --__indexä¸ºä¸€ä¸ªè¡¨,è‹¥ç´¢å¼•ä¸å¯ä»¥è®¿é—®,åˆ™åœ¨__indexçš„è¡¨ä¸­æŸ¥è¯¢,è‹¥ç´¢å¼•å¯ä»¥æ­£å¸¸è®¿é—®,åˆ™æ­£å¸¸è¿”å›
     __index=indextab
 }
 tab=setmetatable({"Lua","C#","C++","Java","Python"},metatab)
 print(tab[10])
-print(tab[5])--ÈôË÷ÒıÔÚtabºÍ__indexÖ¸ÏòµÄ±íÖĞ¶¼¿ÉÒÔ·ÃÎÊ,ÓÅÏÈ·ÃÎÊtabµÄË÷ÒıÖµ
+print(tab[5])--è‹¥ç´¢å¼•åœ¨tabå’Œ__indexæŒ‡å‘çš„è¡¨ä¸­éƒ½å¯ä»¥è®¿é—®,ä¼˜å…ˆè®¿é—®tabçš„ç´¢å¼•å€¼
 ]]
 
----newindexµÄÓÃ·¨
+---newindexçš„ç”¨æ³•
 metatab={
     __metatable="lock",
-    --__indexÎªÒ»¸ö±í,ÈôË÷Òı²»¿ÉÒÔ·ÃÎÊ,ÔòÔÚ__indexµÄ±íÖĞ²éÑ¯,ÈôË÷Òı¿ÉÒÔÕı³£·ÃÎÊ,ÔòÕı³£·µ»Ø
+    --__indexä¸ºä¸€ä¸ªè¡¨,è‹¥ç´¢å¼•ä¸å¯ä»¥è®¿é—®,åˆ™åœ¨__indexçš„è¡¨ä¸­æŸ¥è¯¢,è‹¥ç´¢å¼•å¯ä»¥æ­£å¸¸è®¿é—®,åˆ™æ­£å¸¸è¿”å›
     __index=indextab
 }
 tab=setmetatable({"Lua","C#","C++","Java","Python"},metatab)

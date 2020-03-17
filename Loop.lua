@@ -2,7 +2,7 @@
 --for
 --repeat until(do while)
 
----whileÑ­»·
+---whileå¾ªçŽ¯
 --[[
 a=1
 while a<=20 do
@@ -12,21 +12,21 @@ while a<=20 do
 	a=a+1
 end
 --]]
----forÑ­»·
+---forå¾ªçŽ¯
 --[[
---ÊýÖµ
+--æ•°å€¼
 for i=0,10,3 do
     print(i)
 end
 
---·ºÐÍ
+--æ³›åž‹
 tab={k1=1,k2=2,k3=3}
 for k,v in pairs(tab) do
     print(k,v)
 end
 --]]
 
----repeatÑ­»·
+---repeatå¾ªçŽ¯
 --[[
 a=1
 repeat
@@ -35,9 +35,9 @@ repeat
 until(a>5)
 --]]
 
----Ç¶Ì×Ñ­»·
+---åµŒå¥—å¾ªçŽ¯
 for a=1,5,1 do
     for b=1,a,1 do
-	    print(a)
+	    print("å€¼ä¸º"..a)
 	end
 end
