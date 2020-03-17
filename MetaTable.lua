@@ -6,7 +6,9 @@
 
 
 ---设置普通表和元表的关联
+print()
 print("---------设置普通表和元表的关联-------------------------")
+print()
 tab={"Lua","Java","C#","C++"} --普通表
 metatab={}--元表
 setmetatable(tab,metatab) --将metatab设置为tab的元表,会将普通表返回,元表扩展了普通表的行为
@@ -22,8 +24,9 @@ gt=getmetatable(tab)--获取元表
 --简要写法
 metatab={}
 tab=setmetatable({"asd","asda","h"},metatab)
-
+print()
 print("--------metatable的用法-------------------------")
+print()
 ---__metatable的用法
 metatab={__metatable="assdgd",1,2}
 tab=setmetatable({"asd","asda","h"},metatab)
@@ -31,10 +34,10 @@ print(tab[1])
 --元表的__metatable存在值
 print(getmetatable(tab)[1]) --无法访问
 print(getmetatable(tab))--返回__metatable键的对应值
-
+print()
 print("--------index用法(指向函数)-------------------------")
 ---__index用法(指向函数)
-
+print()
 --元表中的键是有限制的,不能随意写
 metatab={
     __metatable="assdgd",
@@ -52,10 +55,10 @@ print(tab[10])--若索引不可以访问,则调用__index指向的函数,有返�
 a=tab[10]
 print(a)
 
-
+print()
 print("----------index的用法(指向表)-------------------------")
 ---__index的用法(指向表)
-
+print()
 indextab={}
 indextab[5]="Nodejs"
 indextab[6]="Golang"
@@ -71,8 +74,9 @@ metatab={
 tab=setmetatable({"Lua","C#","C++","Java","Python"},metatab)
 print(tab[10])
 print(tab[5])--若索引在tab和__index指向的表中都可以访问,优先访问tab的索引值
-
+print()
 print("--------newindex的用法(指向函数)-------------------------")
+print()
 ---newindex的用法(指向函数)
 ---修改新的索引才会起作用(添加新的数据),并且不进行赋值操作
 
@@ -92,7 +96,9 @@ print(tab[5])
 
 
 ---newindex的用法(指向表)
+print()
 print("--------newindex的用法(指向表)-------------------------")
+print()
 tab={"Lua","C#","C++","Java","Python"}
 newindextab={}
 metatab={
@@ -105,8 +111,9 @@ print(tab[5])
 tab[6]="C" --若操作的索引不在tab中,将数据添加到__newindex指向的表中去,索引为该索引
 print(tab[6])
 print(newindextab[6])
-
+print()
 print("----------为表添加操作符-------------------------")
+print()
 ---为表添加操作符
 tab={"Lua","C#","C++","Java","Python"}
 newtab={"PHP","C","Rust","SQL"}
@@ -157,9 +164,10 @@ for i = 1, #tab do
 end
 
 print(tab)
-
-print("--------call方法---------------")
-tab={"Lua",24,"C#","C++",1,234,"Java",324,"Python"}
+print()
+print("------------call方法-----------------------------------")
+print()
+tab={"Lua",1,"C#","C++",2,3,"Java",4,"Python"}
 newtab={"PHP","C","Rust","SQL"}
 metatab= {
     __add=function(tab,newtab)
@@ -174,24 +182,24 @@ metatab= {
         return tab
     end,
     --当表被当做函数来调用时,会使用__call
-    __call=function(tab,arg)
-        if type(arg)=="number" then
+    __call=function(tab,arg1,arg2)
+        if type(arg1)=="number" then
             for i = 1, #tab do
                 if type(tab[i])=="number" then
-                    tab[i]=tab[i]+arg
+                    tab[i]=tab[i]+arg1+arg2
                 end
             end
         else
             for i = 1, #tab do
                 if type(tab[i])=="string" then
-                    tab[i]=tab[i].." "..arg
+                    tab[i]=tab[i].." "..arg1.." "..arg2
                 end
             end
         end
     end
 }
 setmetatable(tab,metatab)
-tab("123")
+tab("1","1")
 for i = 1, #tab do
     print(tab[i])
 end
