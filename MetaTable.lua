@@ -21,9 +21,24 @@ metatab={}
 tab=setmetatable({"asd","asda","h"},metatab)
 --]]
 
+--[[
 metatab={__metatable="assdgd",1,2}
 tab=setmetatable({"asd","asda","h"},metatab)
 print(tab[1])
 --元表的__metatable存在值
 print(getmetatable(tab)[1]) --无法访问
 print(getmetatable(tab))--返回__metatable键的对应值
+--]]
+
+--元表中的键是有限制的,不能随意写
+metatab={
+    __metatable="assdgd",
+    --__index为一个函数,参数是固定的,参数tab为关联的普通表,key为访问索引
+    __index=function(tab,key)
+        print(key)
+    end
+}
+tab=setmetatable({"Lua","C#","C++","Java","Python"},metatab)
+
+print(tab[1])--若索引可以正常访问,则不调用元表的__index指向的函数
+print(tab[10])--若索引不可以访问,则调用__index指向的函数
