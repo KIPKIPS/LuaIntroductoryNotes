@@ -6,7 +6,7 @@
 
 
 ---设置普通表和元表的关联
-
+print("---------设置普通表和元表的关联-------------------------")
 tab={"Lua","Java","C#","C++"} --普通表
 metatab={}--元表
 setmetatable(tab,metatab) --将metatab设置为tab的元表,会将普通表返回,元表扩展了普通表的行为
@@ -23,7 +23,7 @@ gt=getmetatable(tab)--获取元表
 metatab={}
 tab=setmetatable({"asd","asda","h"},metatab)
 
-
+print("--------metatable的用法-------------------------")
 ---__metatable的用法
 metatab={__metatable="assdgd",1,2}
 tab=setmetatable({"asd","asda","h"},metatab)
@@ -32,7 +32,7 @@ print(tab[1])
 print(getmetatable(tab)[1]) --无法访问
 print(getmetatable(tab))--返回__metatable键的对应值
 
-
+print("--------index用法(指向函数)-------------------------")
 ---__index用法(指向函数)
 
 --元表中的键是有限制的,不能随意写
@@ -53,7 +53,7 @@ a=tab[10]
 print(a)
 
 
-
+print("----------index的用法(指向表)-------------------------")
 ---__index的用法(指向表)
 
 indextab={}
@@ -72,7 +72,7 @@ tab=setmetatable({"Lua","C#","C++","Java","Python"},metatab)
 print(tab[10])
 print(tab[5])--若索引在tab和__index指向的表中都可以访问,优先访问tab的索引值
 
-
+print("--------newindex的用法(指向函数)-------------------------")
 ---newindex的用法(指向函数)
 ---修改新的索引才会起作用(添加新的数据),并且不进行赋值操作
 
@@ -92,7 +92,7 @@ print(tab[5])
 
 
 ---newindex的用法(指向表)
-
+print("--------newindex的用法(指向表)-------------------------")
 tab={"Lua","C#","C++","Java","Python"}
 newindextab={}
 metatab={
@@ -106,9 +106,8 @@ tab[6]="C" --若操作的索引不在tab中,将数据添加到__newindex指向�
 print(tab[6])
 print(newindextab[6])
 
-
+print("----------为表添加操作符-------------------------")
 ---为表添加操作符
---计算表的键值对个数
 tab={"Lua","C#","C++","Java","Python"}
 newtab={"PHP","C","Rust","SQL"}
 metatab={
@@ -137,6 +136,13 @@ metatab={
             sum = sum..tab[k].." "
         end
         return sum
+    end,
+    --__unm取负数
+    __unm=function(tab)
+        for k in pairs(tab) do
+            tab[k]="-"..tab[k]
+        end
+        return tab
     end
 }
 setmetatable(tab,metatab)
@@ -151,3 +157,41 @@ for i = 1, #tab do
 end
 
 print(tab)
+
+print("--------call方法---------------")
+tab={"Lua",24,"C#","C++",1,234,"Java",324,"Python"}
+newtab={"PHP","C","Rust","SQL"}
+metatab= {
+    __add=function(tab,newtab)
+        ---第一种插入方法
+        --for i=1,#newtab do
+        --    table.insert(tab,newtab[i])
+        --end
+        ---第二种插入方法
+        for i=1,#newtab do
+            tab[1+#tab]=newtab[i]
+        end
+        return tab
+    end,
+    --当表被当做函数来调用时,会使用__call
+    __call=function(tab,arg)
+        if type(arg)=="number" then
+            for i = 1, #tab do
+                if type(tab[i])=="number" then
+                    tab[i]=tab[i]+arg
+                end
+            end
+        else
+            for i = 1, #tab do
+                if type(tab[i])=="string" then
+                    tab[i]=tab[i].." "..arg
+                end
+            end
+        end
+    end
+}
+setmetatable(tab,metatab)
+tab("123")
+for i = 1, #tab do
+    print(tab[i])
+end
