@@ -3,6 +3,9 @@
 --- Created by KipKips.
 --- DateTime: 2020.3.16 22:28
 ---
+
+
+---设置普通表和元表的关联
 --[[
 tab={"Lua","Java","C#","C++"} --普通表
 metatab={}--元表
@@ -30,15 +33,50 @@ print(getmetatable(tab)[1]) --无法访问
 print(getmetatable(tab))--返回__metatable键的对应值
 --]]
 
+---__metatable用法
+--[[
 --元表中的键是有限制的,不能随意写
 metatab={
     __metatable="assdgd",
     --__index为一个函数,参数是固定的,参数tab为关联的普通表,key为访问索引
+    --__index指向的函数可以有返回值
     __index=function(tab,key)
-        print(key)
+        --print("不存在索引"..key.."的值")
+        return "不存在索引"..key.."的值"
     end
 }
 tab=setmetatable({"Lua","C#","C++","Java","Python"},metatab)
 
 print(tab[1])--若索引可以正常访问,则不调用元表的__index指向的函数
-print(tab[10])--若索引不可以访问,则调用__index指向的函数
+print(tab[10])--若索引不可以访问,则调用__index指向的函数,有返回值,则输出返回值
+a=tab[10]
+print(a)
+--]]
+
+
+---__index的用法
+--[[
+indextab={}
+indextab[5]="Nodejs"
+indextab[6]="Golang"
+indextab[7]="PHP"
+indextab[8]="JavaScript"
+indextab[9]="SQL"
+indextab[10]="Swift"
+metatab={
+    __metatable="lock",
+    --__index为一个表,若索引不可以访问,则在__index的表中查询,若索引可以正常访问,则正常返回
+    __index=indextab
+}
+tab=setmetatable({"Lua","C#","C++","Java","Python"},metatab)
+print(tab[10])
+print(tab[5])--若索引在tab和__index指向的表中都可以访问,优先访问tab的索引值
+]]
+
+---newindex的用法
+metatab={
+    __metatable="lock",
+    --__index为一个表,若索引不可以访问,则在__index的表中查询,若索引可以正常访问,则正常返回
+    __index=indextab
+}
+tab=setmetatable({"Lua","C#","C++","Java","Python"},metatab)

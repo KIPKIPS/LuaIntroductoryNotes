@@ -1,3 +1,4 @@
+---输出变量的类型
 --[[
 print(type("dssd"))
 print(type(13))

@@ -1,4 +1,4 @@
---迭代器
+---迭代器
 arr={"lua","c#","java",k1="c++","python","c","golang",k2="mysql",k3=nil,"shaderlab"}
 --pairs遍历arr,遍历所有键值对
 for k,v in pairs(arr) do
@@ -15,6 +15,7 @@ end
 	--循环体
 --end
 
+---迭代函数
 --1.调用迭代函数(把状态变量和控制变量作为参数传递给迭代函数)
 --状态变量只会在第一次调用时赋值
 --2.若迭代函数的返回值返回nil,退出循环列表

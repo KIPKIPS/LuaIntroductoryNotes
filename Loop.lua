@@ -2,6 +2,7 @@
 --for
 --repeat until(do while)
 
+---while循环
 --[[
 a=1
 while a<=20 do
@@ -11,7 +12,7 @@ while a<=20 do
 	a=a+1
 end
 --]]
-
+---for循环
 --[[
 --数值
 for i=0,10,3 do
@@ -25,6 +26,7 @@ for k,v in pairs(tab) do
 end
 --]]
 
+---repeat循环
 --[[
 a=1
 repeat
@@ -33,7 +35,7 @@ repeat
 until(a>5)
 --]]
 
---嵌套循环
+---嵌套循环
 for a=1,5,1 do
     for b=1,a,1 do
 	    print(a)

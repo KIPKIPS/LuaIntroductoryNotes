@@ -1,3 +1,4 @@
+---函数的声明
 --[[
 function fact(n)
     if n==1 then
@@ -24,7 +25,7 @@ print(fun2(1))
 
 --]]
 
---类C#委托
+---类C#委托
 --[[
 tab={k1="v1",k2="v2",k3="v3"}
 local function f1(k,v)
@@ -53,7 +54,7 @@ testFun(tab,
 temp=testFun
 temp(tab,f1)
 --]]
-
+---委托
 --[[
 myFunc=function (n)
     print(n)
@@ -74,14 +75,16 @@ Add(1,2,NumAdd)
 Add("asda","afdfs",StrAdd)
 --]]
 
+---函数的返回值
 function fun()
     return 1,2,3,"asda"
 end
 r1,r2,r3,r4=fun()
 print(r1,r2,r3,r4)
 
+---多参数函数
 function test(...)
-local arg={...}
+	local arg={...}
     print(arg)
 	for k,v in pairs(arg) do
 	    print(k.." 连接 "..v)
