@@ -6,7 +6,7 @@
 
 
 ---设置普通表和元表的关联
---[[
+
 tab={"Lua","Java","C#","C++"} --普通表
 metatab={}--元表
 setmetatable(tab,metatab) --将metatab设置为tab的元表,会将普通表返回,元表扩展了普通表的行为
@@ -16,25 +16,25 @@ st=setmetatable(tab,metatab)--普通表
 print(st[1],st[2],st[3],st[4])
 
 gt=getmetatable(tab)--获取元表
---]]
 
---[[
+
+
 --简要写法
 metatab={}
 tab=setmetatable({"asd","asda","h"},metatab)
---]]
 
---[[
+
+---__metatable的用法
 metatab={__metatable="assdgd",1,2}
 tab=setmetatable({"asd","asda","h"},metatab)
 print(tab[1])
 --元表的__metatable存在值
 print(getmetatable(tab)[1]) --无法访问
 print(getmetatable(tab))--返回__metatable键的对应值
---]]
 
----__metatable用法
---[[
+
+---__index用法(指向函数)
+
 --元表中的键是有限制的,不能随意写
 metatab={
     __metatable="assdgd",
@@ -51,11 +51,11 @@ print(tab[1])--若索引可以正常访问,则不调用元表的__index指向的
 print(tab[10])--若索引不可以访问,则调用__index指向的函数,有返回值,则输出返回值
 a=tab[10]
 print(a)
---]]
 
 
----__index的用法
---[[
+
+---__index的用法(指向表)
+
 indextab={}
 indextab[5]="Nodejs"
 indextab[6]="Golang"
@@ -71,12 +71,37 @@ metatab={
 tab=setmetatable({"Lua","C#","C++","Java","Python"},metatab)
 print(tab[10])
 print(tab[5])--若索引在tab和__index指向的表中都可以访问,优先访问tab的索引值
-]]
 
----newindex的用法
+
+---newindex的用法(指向函数)
+---修改新的索引才会起作用(添加新的数据),并且不进行赋值操作
+
+tab={"Lua","C#","C++","Java","Python"}
 metatab={
-    __metatable="lock",
-    --__index为一个表,若索引不可以访问,则在__index的表中查询,若索引可以正常访问,则正常返回
-    __index=indextab
+    __newindex=function(tab,key,value)--tab为操作的表,key为操作的索引,value为改变的值
+        print("tab的索引"..key.."的值为"..value)
+        rawset(tab, key,value)---rawset方法将表中值更新
+
+    end
 }
-tab=setmetatable({"Lua","C#","C++","Java","Python"},metatab)
+setmetatable(tab,metatab)
+tab[6]="C"--调用__newindex指向的函数,不进行赋值操作,除非进行rawset(tab,key,value)操作
+print(tab[6])
+tab[5]="C"--无输出
+print(tab[5])
+
+
+---newindex的用法(指向表)
+
+tab={"Lua","C#","C++","Java","Python"}
+newindextab={}
+metatab={
+    __newindex=newindextab
+}
+setmetatable(tab,metatab)
+
+tab[5]="Rust" --操作的索引在tab中,对tab进行操作
+print(tab[5])
+tab[6]="C" --若操作的索引不在tab中,将数据添加到__newindex指向的表中去,索引为该索引
+print(tab[6])
+print(newindextab[6])
