@@ -105,3 +105,49 @@ print(tab[5])
 tab[6]="C" --若操作的索引不在tab中,将数据添加到__newindex指向的表中去,索引为该索引
 print(tab[6])
 print(newindextab[6])
+
+
+---为表添加操作符
+--计算表的键值对个数
+tab={"Lua","C#","C++","Java","Python"}
+newtab={"PHP","C","Rust","SQL"}
+metatab={
+    --__add值指向函数,参数为当前表和新表
+    __add=function(tab,newtab)
+        ---第一种插入方法
+        --for i=1,#newtab do
+        --    table.insert(tab,newtab[i])
+        --end
+        ---第二种插入方法
+        for i=1,#newtab do
+            tab[1+#tab]=newtab[i]
+        end
+        return tab
+    end,
+    __concat=function(tab,str)
+        for i=1,#tab do
+            tab[i]=tab[i]..str
+        end
+        return tab
+    end,
+    --__tostring用来定义print(tab)的输出
+    __tostring = function(tab)
+        sum = ""
+        for k in pairs(tab) do
+            sum = sum..tab[k].." "
+        end
+        return sum
+    end
+}
+setmetatable(tab,metatab)
+tab=tab+newtab
+for i = 1, #tab do
+    print(tab[i])
+end
+
+tab=tab.."_wkp"
+for i = 1, #tab do
+    print(tab[i])
+end
+
+print(tab)
