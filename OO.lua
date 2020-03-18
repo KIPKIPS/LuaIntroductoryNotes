@@ -75,3 +75,32 @@ p1=Person:new() --创建新的表
 p1.name="wjl"
 p1.age=23
 p1:eat()
+print("---------------------------------------------------------")
+---对构造函数进行扩展
+Person={
+    name,
+    age
+}
+function Person:eat()
+    print(self.age.."岁的"..self.name.."在吃饭")
+end
+--创建一个表的模板,通过使用模板达到类似构造函数的目的
+--使用new方法创建新的表
+function Person:new(o)
+    --若o为空,则t={},若o不为空,则t=o
+    t = o or {}
+
+    --t为元表,若调用属性时,该属性不存在,就在__index指向的表里面去查找
+    setmetatable(t,{__index=Person})
+    return t
+end
+
+--使用新的构造函数
+
+p1=Person:new(nil)--构造全新的对象,值全为空
+print(p1.name,p1.age,p1.weight)
+
+--有参构造函数,可以添加新的属性
+p2=Person:new({name="wxy",age=26,weight=100})
+print(p2.name,p2.age,p2.weight)
+p2:eat()
