@@ -88,10 +88,14 @@ end
 --使用new方法创建新的表
 function Person:new(o)
     --若o为空,则t={},若o不为空,则t=o
-    t = o or {}
+    local t = o or {}  --防止外界访问到t
 
     --t为元表,若调用属性时,该属性不存在,就在__index指向的表里面去查找
-    setmetatable(t,{__index=Person})
+    --1.
+    --setmetatable(t,{__index=Person})
+    --2.
+    setmetatable(t,self)
+    self.__index=self
     return t
 end
 
@@ -104,3 +108,37 @@ print(p1.name,p1.age,p1.weight)
 p2=Person:new({name="wxy",age=26,weight=100})
 print(p2.name,p2.age,p2.weight)
 p2:eat()
+
+print("---------------------------------------------------------")
+---实现面向对象的类的继承
+Person={
+    name,
+    age
+}
+function Person:eat()
+    print(self.age.."岁的"..self.name.."在吃饭")
+end
+--创建一个表的模板,通过使用模板达到类似构造函数的目的
+--使用new方法创建新的表
+function Person:new(o)
+    --若o为空,则t={},若o不为空,则t=o
+    local t = o or {}  --防止外界访问到t
+
+    --t为元表,若调用属性时,该属性不存在,就在__index指向的表里面去查找
+    --1.
+    --setmetatable(t,{__index=Person})
+    --2.
+    setmetatable(t,self)
+    self.__index=self
+    return t
+end
+
+Student=Person:new()
+Student.grade=1
+Student.class=20
+
+s1=Student:new({grade=4,class=3,weight=100,name="wjz",age=49})
+print(s1.name,s1.age,s1.grade,s1.class,s1.weight)
+s1:eat()
+--s1.eat(s1)
+ 
