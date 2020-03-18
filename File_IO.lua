@@ -17,7 +17,7 @@ io.close()]]
 --[[file=io.open("File_IO_DataTest_Mode_W.txt","w") --打开文件
 io.output(file) --从程序向文件输出数据
 io.write("你看****我像不****像在****骂人****\n")
-io.write("你————————说————————什——————么——————?————我—————————听—————————不————————清\n")]]
+io.write("你————————说————————什——————么——————啊?————我—————————听—————————不————————清\n")]]
 
 ---a 以附加方式打开文件 若文件存在,则在文件末尾附加,若不存在则新建文件
 --[[file=io.open("File_IO_DataTest_Mode_W.txt","a") --打开文件
@@ -31,11 +31,15 @@ io.close()]]
 ---+ 代表文件既可读又可写
 
 --output对应写入操作
-file=io.open("File_IO_DataTest_Mode_W.txt","a+") --打开文件
-io.input(file)
 
+--[[file=io.open("File_IO_DataTest_Mode_W.txt","a+") --打开文件
+io.input(file)
 print(io.read("*l"))--读取下一行 在文件尾(EOF)处返回 nil
 print(io.read("*n"))--读取该行的数字,数字必须在第一位
---print(io.read("*a"))--当前位置到结尾
-print(io.read(1000))--从当前位置读取1000个字符
-io.close()
+print(io.read("*a"))--当前位置到结尾
+print(io.read(1000))--从当前位置读取1000个字符]]--[[
+io.close()]]
+
+file=io.open("File_IO_DataTest_Mode_W.txt","a") --打开文件
+print(file:read())
+file:write("sccccccccccccccad\n")
