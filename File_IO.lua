@@ -14,17 +14,28 @@ print(io.read())--该行没有数据,输出nil
 io.close()]]
 
 ---w 以只写模式打开文件 若文件存在,则清空文件,若不存在则新建文件
-file=io.open("File_IO_DataTest_Mode_W.txt","w") --打开文件
+--[[file=io.open("File_IO_DataTest_Mode_W.txt","w") --打开文件
 io.output(file) --从程序向文件输出数据
 io.write("你看****我像不****像在****骂人****\n")
-io.write("你————————说————————什——————么——————?————我—————————听—————————不————————清\n")
+io.write("你————————说————————什——————么——————?————我—————————听—————————不————————清\n")]]
 
 ---a 以附加方式打开文件 若文件存在,则在文件末尾附加,若不存在则新建文件
-file=io.open("File_IO_DataTest_Mode_W.txt","a") --打开文件
+--[[file=io.open("File_IO_DataTest_Mode_W.txt","a") --打开文件
 io.write("对不起我太可爱了\n")
 io.write("谁是电音之王?\n")
+io.close()]]
 ---w+ 代表可读写模式,若文件存在,则清空文件,若文件不存在,则创建文件
 ---r+ 代表可读写模式,文件必须存在
 ---a+ 代表以可读写模式打开文件,文件存在,则在文件尾部附加,若文件不存在,则创建文件
 ---b 二进制模式,若文件为二进制,可以加上b
 ---+ 代表文件既可读又可写
+
+--output对应写入操作
+file=io.open("File_IO_DataTest_Mode_W.txt","a+") --打开文件
+io.input(file)
+
+print(io.read("*l"))--读取下一行 在文件尾(EOF)处返回 nil
+print(io.read("*n"))--读取该行的数字,数字必须在第一位
+--print(io.read("*a"))--当前位置到结尾
+print(io.read(1000))--从当前位置读取1000个字符
+io.close()
