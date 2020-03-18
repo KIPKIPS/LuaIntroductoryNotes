@@ -129,6 +129,11 @@ print(coroutine.status(co))--返回协程的状态,当前为终止态 dead
 print(coroutine.resume(co))--false
 print("-----------------------------------------")
 ---协程的挂起 方法二 在外部函数yield
+---第一个yield的参数作为第一个resume的返回值
+---第一个resume的参数作为协程函数的参数,第二个resume的参数作为第一个yield的返回值
+---
+---
+
 --resume的参数作为yield的返回值,yield的参数作为resume的返回值
 function outFun(a,b)
     print("outfun里面的输出"..a^b)
@@ -150,3 +155,36 @@ coroutine.resume(co,"wef","wqf")
 print("----3----")
 coroutine.resume(co)
 
+print("-------------------------------------------")
+--[[
+print("生产者消费者问题")
+local newProductor
+
+function productor()
+    local i = 0
+    while true do
+        i = i + 1
+        print("生产"..x.."号物资")
+        send(i)     -- 将生产的物品发送给消费者
+    end
+end
+
+function consumer()
+    while true do
+        local i = receive()     -- 从生产者那里得到物品
+        print("消费"..i.."号物资")
+    end
+end
+
+function receive()
+    local status, value = coroutine.resume(newProductor)
+    return value
+end
+
+function send(x)
+    coroutine.yield(x)     -- x表示需要发送的值，值返回以后，就挂起该协同程序
+end
+
+-- 启动程序
+newProductor = coroutine.create(productor)
+consumer()]]
