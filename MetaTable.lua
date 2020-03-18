@@ -162,8 +162,13 @@ tab=tab.."_wkp"
 for i = 1, #tab do
     print(tab[i])
 end
-
 print(tab)
+
+tab=-tab
+for i = 1, #tab do
+    print(tab[i])
+end
+
 print()
 print("------------call方法-----------------------------------")
 print()
