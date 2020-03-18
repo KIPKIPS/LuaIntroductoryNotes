@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Array.lua" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ConditionalStatement.lua" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Coroutine.lua" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/DataType.lua" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/FirstLuaCode.lua" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Function.lua" charset="UTF-8" />
