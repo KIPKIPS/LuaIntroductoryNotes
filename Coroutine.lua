@@ -23,6 +23,22 @@ add=coroutine.wrap(
 )
 add(45,445)
 print("-----------------------------------------")
+---协程的声明和调用 方法三
+function add(a,b)
+    print("协程三 "..a+b)
+end
+co=coroutine.create(add)
+coroutine.resume(co,1,2)
+
+print("-----------------------------------------")
+---协程的声明和调用 方法四
+function add(a,b)
+    print("协程四 "..a+b)
+end
+add=coroutine.wrap(add)
+add(1,234)
+
+print("-----------------------------------------")
 ---协程的继续执行 方法一
 test=coroutine.create(
         function(a,b)
@@ -54,9 +70,9 @@ end
 
 co = coroutine.create(function (a , b)
     print("第一次协同程序执行输出", a, b) -- co-body 1 10
-    local r = foo(a + 1)
+    local r,s = foo(a + 1)
 
-    print("第二次协同程序执行输出", r)
+    print("第二次协同程序执行输出", r,s)
     local r, s = coroutine.yield(a + b, a - b)  -- a，b的值为第一次调用协同程序时传入
 
     print("第三次协同程序执行输出", r, s)
@@ -66,7 +82,7 @@ end)
 print("main", coroutine.resume(co, 1, 10)) -- true, 4
 
 print("--分割线----")
-print("main", coroutine.resume(co, "r")) -- true 11 -9
+print("main", coroutine.resume(co, "rmmmm","emmmmmmm")) -- true 11 -9
 print("---分割线---")
 print("main", coroutine.resume(co, "x", "y")) -- true 10 end
 print("---分割线---")
@@ -86,10 +102,13 @@ resend1,resend2=coroutine.resume(co)
 print(resend1,resend2)
 print("-----------------------------------------")
 
----协程的挂起
+---协程的挂起 方法一 直接在协程函数里yield
 co=coroutine.create(
+
         function(a,b)
             print(a+b)
+            print(coroutine.running())--返回协程的内存地址
+            print(coroutine.status(co))--返回协程的状态,当前为运行态 running
             coroutine.yield()
             print(a-b)
             coroutine.yield()
@@ -97,6 +116,7 @@ co=coroutine.create(
             coroutine.yield()
         end
 )
+print(coroutine.status(co))--返回协程的状态,当前为挂起态 suspended
 print(coroutine.resume(co,8,2))
 print()
 print(coroutine.resume(co))
@@ -105,5 +125,28 @@ print(coroutine.resume(co))
 print()
 print(coroutine.resume(co))--true
 print()
+print(coroutine.status(co))--返回协程的状态,当前为终止态 dead
 print(coroutine.resume(co))--false
 print("-----------------------------------------")
+---协程的挂起 方法二 在外部函数yield
+--resume的参数作为yield的返回值,yield的参数作为resume的返回值
+function outFun(a,b)
+    print("outfun里面的输出"..a^b)
+    return coroutine.yield(a+a,b+b)--yield的参数会作为对应resume的返回值
+end
+co=coroutine.create(
+        function(a,b)
+            print(a+b)
+            r,s=outFun(a,b)
+            print(r,s)
+            coroutine.yield()
+            print(a*b)
+        end
+)
+print("----1----")
+print(coroutine.resume(co,2,4))
+print("----2----")
+coroutine.resume(co,"wef","wqf")
+print("----3----")
+coroutine.resume(co)
+
