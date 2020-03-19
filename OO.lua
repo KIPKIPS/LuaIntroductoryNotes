@@ -141,4 +141,3 @@ s1=Student:new({grade=4,class=3,weight=100,name="wjz",age=49})
 print(s1.name,s1.age,s1.grade,s1.class,s1.weight)
 s1:eat()
 --s1.eat(s1)
- 
