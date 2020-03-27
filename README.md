@@ -1,5 +1,5 @@
-# Lua_Programme
-Lua'sWorkStation
+# Lua_Introductory_Notes
+这是我开始使用Lua语言的库
 
 1.Lua的数据类型
 2.Lua数据类型的常见操作
