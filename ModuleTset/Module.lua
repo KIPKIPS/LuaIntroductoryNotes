@@ -5,16 +5,16 @@
 ---
 Module={}
 Module.var="wkp"
---函数的第一种声明方式
+--锟斤拷锟斤拷锟侥碉拷一锟斤拷锟斤拷锟斤拷锟斤拷式
 Module.fun1= function()
-    print("这是Module模块的fun1函数")
+    print("锟斤拷锟斤拷Module模锟斤拷锟絝un1锟斤拷锟斤拷")
 end
---函数的第二种声明方式
+--锟斤拷锟斤拷锟侥第讹拷锟斤拷锟斤拷锟斤拷锟斤拷式
 function Module.fun2()
-    print("这是Module模块的fun2函数")
+    print("锟斤拷锟斤拷Module模锟斤拷锟絝un2锟斤拷锟斤拷")
 end
 local function LocalFun1()
-    print("这是Module模块的Localfun1函数")
+    print("锟斤拷锟斤拷Module模锟斤拷锟絃ocalfun1锟斤拷锟斤拷")
 end
 function Module.fun3()
     LocalFun1()
