@@ -20,10 +20,10 @@ io.write("你看****我像不****像在****骂人****\n")
 io.write("你————————说————————什——————么——————啊?————我—————————听—————————不————————清\n")]]
 
 ---a 以附加方式打开文件 若文件存在,则在文件末尾附加,若不存在则新建文件
---[[file=io.open("File_IO_DataTest_Mode_W.txt","a") --打开文件
+file=io.open("File_IO_DataTest_Mode_W.txt","a") --打开文件
 io.write("对不起我太可爱了\n")
 io.write("谁是电音之王?\n")
-io.close()]]
+io.close()
 ---w+ 代表可读写模式,若文件存在,则清空文件,若文件不存在,则创建文件
 ---r+ 代表可读写模式,文件必须存在
 ---a+ 代表以可读写模式打开文件,文件存在,则在文件尾部附加,若文件不存在,则创建文件
@@ -40,6 +40,6 @@ print(io.read("*a"))--当前位置到结尾
 print(io.read(1000))--从当前位置读取1000个字符]]--[[
 io.close()]]
 
-file=io.open("File_IO_DataTest_Mode_W.txt","a") --打开文件
+--[[file=io.open("File_IO_DataTest_Mode_W.txt","a") --打开文件
 print(file:read())
-file:write("sccccccccccccccad\n")
+file:write("sccccccccccccccad\n")]]
