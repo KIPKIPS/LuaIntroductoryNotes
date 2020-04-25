@@ -639,7 +639,7 @@ file=io.open("Data_Of_Chat_Config.txt","a")
 io.output(file)
 for i = 1, table.maxn(outside) do
     if outside[i]~=nil then
-        print("tab的第"..i.."个数据包含"..#outside[i].."个{}包裹的字符串")
+        print("文件的第"..i.."个数据包含"..#outside[i].."个{}包裹的字符串")
         io.write("tab的第"..i.."个数据包含"..#outside[i].."个{}包裹的字符串\n")
         for j = 1, table.maxn(outside[i]) do
             io.write("第"..j.."个{}包裹的字符串被|分割为"..#outside[i][j].."个子串,它们分别为:\n")
