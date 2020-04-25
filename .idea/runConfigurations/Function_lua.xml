@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Function.lua" type="lua.app" factoryName="Lua Application" singleton="false">
-    <option name="program" value="E:\Lua5.1\5.1\lua.exe" />
-    <option name="file" value="$PROJECT_DIR$/Function.lua" />
-    <option name="workingDir" value="D:\Lua_WorkStation" />
+    <option name="program" value="E:\5.1\lua.exe" />
+    <option name="file" value="$PROJECT_DIR$/data_system_open.lua" />
+    <option name="workingDir" value="D:\Unity_Workstation\Lua_Introductory_Notes" />
     <option name="debuggerType" value="2" />
     <option name="params" value="" />
     <option name="charset" value="UTF-8" />
