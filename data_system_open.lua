@@ -635,7 +635,7 @@ for i = 0, table.maxn(tab) do
         outside[i]=middle
     end
 end
-file=io.open("Data_Of_Chat_Config.txt","a")
+file=io.open("Data_Of_Chat_Config_wkp.txt","a")
 io.output(file)
 for i = 1, table.maxn(outside) do
     if outside[i]~=nil then
