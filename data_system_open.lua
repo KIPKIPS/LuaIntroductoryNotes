@@ -621,58 +621,51 @@ local tab=DataSystemOpen.data_chat_config
 local outside={}
 for outk, outv in pairs(tab) do
     local middle={}
+    middle.index=outk
     for midk, midv in pairs(outv) do
         --s为{.*}形式的包裹字符串
-        for s in string.gmatch(midv,'{[^}]+}') do
+        for s in string.gmatch(midv,'{[^}]-}') do
             local inside={}
-            local insindex=0
-            for t in string.gmatch(s,'[^|{%]%[}]+') do
-                --print(t)
-                if insindex==0 then
-                    inside[0]=t
-                    --print(t.."key")
-                    insindex=insindex+1
+            inside.key=""
+            inside.value={}
+            for t in string.gmatch(s,'[^|{%]%[}]+') do --匹配|划分的字符串
+                if string.match(t,'^%a+_%d-$')~=nil then
+                    inside["key"]=string.match(t,'^%a+_%d+$') --匹配 字符串_数字
+                    --print(inside["key"])
                 else
-                    if insindex==2 then
-                        inside[insindex]="\""..t.."\""
-                    else
-                        inside[insindex]=t
+                    if string.match(t,'^%d+$')==nil then --判断是否为纯数字
+                        t="\""..t.."\""
                     end
-
-                    insindex=insindex+1
-                    --print(t)
+                    table.insert(inside.value,t)
                 end
             end
             table.insert(middle,inside)
         end
+
     end
-    outside[outk]=middle
-    --table.insert(outside,middle)
+    table.insert(outside,middle)
 end
 
 ---排序,对outside层排序,得到有序的middle层
-outside_sort={}
-local out_key ={}
-for i in pairs(outside) do
-    table.insert(out_key,i)   --提取outside中的键值插入到out_key表中
-end
-table.sort(out_key)
-for k, v in pairs(out_key) do
-    outside_sort[k]=outside[v]
-end
-
+table.sort(outside,function(tab1,tab2) return tab1.index<tab2.index end)
 ---写入文本
 file=io.open("Data_Of_Chat_Config_wkp.txt","a")
 io.output(file)
-for ok, ov in pairs(outside_sort) do
-    io.write("["..(ok-1).."] = {\n")
-    local tempindex=1
-    ---二次排序,对middle层排序,得到有序的inside层(以key值为排序依据)
-    table.sort(ov,function(a,b) return a[0]<b[0] end)
-    for mk, mv in pairs(ov) do
-        io.write("\t["..tempindex.."]".." = {key = \""..mv[0].."\",\tvalue = {"..table.concat(mv,',').."}},\n")
-        tempindex=tempindex+1
+for ok, mid in pairs(outside) do
+    print("["..mid.index.."] = {")
+    io.write("["..mid.index.."] = {\n")
+    tempindex=1
+    for mk, ins in pairs(mid) do
+        if type(ins)~="number" then
+            table.sort(ins,function(tab1,tab2) return tab1.key<tab2.key end)
+            --print(ins.key)
+            print("\t["..tempindex.."] = ".."{key = \""..ins.key.."\",{"..table.concat(ins.value,",").."}")
+            io.write("\t["..tempindex.."] = ".."{key = \""..ins.key.."\",{"..table.concat(ins.value,",").."}}\n")
+            tempindex=tempindex+1
+        end
+
     end
-    io.write("},\n\n")
+    print("}\n")
+    io.write("}\n")
 end
 io.close(file)
