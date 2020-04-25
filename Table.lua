@@ -96,3 +96,6 @@ end
 num={1,34,5,345,3,2,765,758,234,21,4,432,5,25,3}
 print("最大值"..Max(tab,"String"))
 print("最大值"..Max(num,"Number"))
+
+tab={[0]={key="das",value={[1]="asd"}}}
+print(tab[0].key)
