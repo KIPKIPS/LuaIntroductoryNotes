@@ -615,42 +615,64 @@ DataSystemOpen.data_chat_config={
 [30606]={link_id=30606,msg="伏兽阵：\n\n提升阵上成员的{string_2|1|控制、伤害、速度}，对{string_2|4|迅疗阵}有克制效果。",lev=1},
 [30607]={link_id=30607,msg="静心阵：\n\n提升阵上成员的{string_2|1|伤害、抗控}，对{string_2|4|疾风阵}有克制效果。",lev=1}
 }
-tab=DataSystemOpen.data_chat_config
-outside={}
---遍历table
-for i = 0, table.maxn(tab) do
-    if tab[i]~=nil then
-        local middle={}
-        --匹配{}包裹的字符串,懒惰匹配,得到多个{}包含的字符串table middle,存入outside
-        for s in string.gmatch(tab[i].msg,'{[^}]+}') do
+
+---遍历table,得到乱序的outside表,outside分三层下一层为middle层,最里层为inside层
+local tab=DataSystemOpen.data_chat_config
+local outside={}
+for outk, outv in pairs(tab) do
+    local middle={}
+    for midk, midv in pairs(outv) do
+        --s为{.*}形式的包裹字符串
+        for s in string.gmatch(midv,'{[^}]+}') do
             local inside={}
-            --将每个{}包含的字符串(不包含{}本身)以"|"分割开并存入inside,将inside存入middle
-            for t in string.gmatch(s,'[^|{}]+') do
+            local insindex=0
+            for t in string.gmatch(s,'[^|{%]%[}]+') do
                 --print(t)
-                table.insert(inside,t)
+                if insindex==0 then
+                    inside[0]=t
+                    --print(t.."key")
+                    insindex=insindex+1
+                else
+                    if insindex==2 then
+                        inside[insindex]="\""..t.."\""
+                    else
+                        inside[insindex]=t
+                    end
+
+                    insindex=insindex+1
+                    --print(t)
+                end
             end
             table.insert(middle,inside)
         end
-        --table.insert(outside,middle)
-        outside[i]=middle
     end
+    outside[outk]=middle
+    --table.insert(outside,middle)
 end
+
+---排序,对outside层排序,得到有序的middle层
+outside_sort={}
+local out_key ={}
+for i in pairs(outside) do
+    table.insert(out_key,i)   --提取outside中的键值插入到out_key表中
+end
+table.sort(out_key)
+for k, v in pairs(out_key) do
+    outside_sort[k]=outside[v]
+end
+
+---写入文本
 file=io.open("Data_Of_Chat_Config_wkp.txt","a")
 io.output(file)
-for i = 1, table.maxn(outside) do
-    if outside[i]~=nil then
-        print("文件的第"..i.."个数据包含"..#outside[i].."个{}包裹的字符串")
-        io.write("tab的第"..i.."个数据包含"..#outside[i].."个{}包裹的字符串\n")
-        for j = 1, table.maxn(outside[i]) do
-            io.write("第"..j.."个{}包裹的字符串被|分割为"..#outside[i][j].."个子串,它们分别为:\n")
-            print("第"..j.."个{}包裹的字符串被|分割为"..#outside[i][j].."个子串,它们分别为:")
---[[            for k = 1, table.maxn(outside[i][j]) do
-                tempStr=tempStr..outside[i][j][k].." ";
-            end]]
-            io.write(table.concat(outside[i][j],",").."\n")
-            print(table.concat(outside[i][j],","))
-        end
-        io.write("\n")
+for ok, ov in pairs(outside_sort) do
+    io.write("["..(ok-1).."] = {\n")
+    local tempindex=1
+    ---二次排序,对middle层排序,得到有序的inside层(以key值为排序依据)
+    table.sort(ov,function(a,b) return a[0]<b[0] end)
+    for mk, mv in pairs(ov) do
+        io.write("\t["..tempindex.."]".." = {key = \""..mv[0].."\",\tvalue = {"..table.concat(mv,',').."}},\n")
+        tempindex=tempindex+1
     end
+    io.write("},\n\n")
 end
 io.close(file)
