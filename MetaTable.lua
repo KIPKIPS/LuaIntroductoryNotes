@@ -18,7 +18,7 @@ st=setmetatable(tab,metatab)--普通表
 print(st[1],st[2],st[3],st[4])
 
 gt=getmetatable(tab)--获取元表
-
+print(gt,metatab)
 
 
 --简要写法

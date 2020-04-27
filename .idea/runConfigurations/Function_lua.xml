@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Function.lua" type="lua.app" factoryName="Lua Application" singleton="false">
     <option name="program" value="E:\5.1\lua.exe" />
-    <option name="file" value="$PROJECT_DIR$/CheckChinese.lua" />
+    <option name="file" value="$PROJECT_DIR$/MetaTable.lua" />
     <option name="workingDir" value="D:\Unity_Workstation\Lua_Introductory_Notes" />
     <option name="debuggerType" value="2" />
     <option name="params" value="" />
